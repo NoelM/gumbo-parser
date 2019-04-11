@@ -31,9 +31,9 @@ static std::string cleantext(GumboNode* node) {
              node->v.element.tag != GUMBO_TAG_STYLE) {
     std::string contents;
     if (node->v.element.tag == GUMBO_TAG_IMG) {
-      content = " $$$IMG$$$";
+      contents = " $$$IMG$$$";
     } else {
-      content = "";
+      contents = "";
     }
     GumboVector* children = &node->v.element.children;
     for (unsigned int i = 0; i < children->length; ++i) {
