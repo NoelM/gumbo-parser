@@ -29,7 +29,12 @@ static std::string cleantext(GumboNode* node) {
   } else if (node->type == GUMBO_NODE_ELEMENT &&
              node->v.element.tag != GUMBO_TAG_SCRIPT &&
              node->v.element.tag != GUMBO_TAG_STYLE) {
-    std::string contents = "";
+    std::string contents;
+    if (node->v.element.tag == GUMBO_TAG_IMG) {
+      content = " $$$IMG$$$";
+    } else {
+      content = "";
+    }
     GumboVector* children = &node->v.element.children;
     for (unsigned int i = 0; i < children->length; ++i) {
       const std::string text = cleantext((GumboNode*) children->data[i]);
